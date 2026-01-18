@@ -166,7 +166,8 @@ if uploaded_file is not None:
 
     # Process the chat
     with st.spinner("Matching characters... This may take a while for long chats."):
-        df_results = process_whatsapp_file("temp_chat.txt", train_file_path)
+        df_results = process_whatsapp_file("temp_chat.txt")
 
     st.subheader("Mapped Characters")
     st.dataframe(df_results)
+
