@@ -1451,8 +1451,6 @@ if uploaded_file is not None:
     st.subheader("Mapped Characters")
     st.dataframe(df_results)
 
-============================================================
-WhatsApp → Stranger Things Character Mapper (Prototype)
-============================================================
+
 
 
