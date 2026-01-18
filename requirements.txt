@@ -1,7 +1,8 @@
-sentence-transformers
+sentence_transformers
 scikit-learn
 pandas
 numpy
 streamlit
+
 
 
