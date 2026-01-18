@@ -95,8 +95,8 @@ def process_whatsapp_file(file_path):
     # -------------------------------
     embedder = TextEmbedding()
 
-    train_embeddings = np.array(list(embedder.encode(df_train["Dialogue"].tolist())))
-    test_embeddings  = np.array(list(embedder.encode(df_test["Dialogue"].tolist())))
+    train_embeddings = np.array(list(embedder.embed(df_train["Dialogue"].tolist())))
+    test_embeddings  = np.array(list(embedder.embed(df_test["Dialogue"].tolist())))
 
     # -------------------------------
     # Average embedding per character
@@ -170,5 +170,6 @@ if uploaded_file is not None:
 
     st.subheader("Mapped Characters")
     st.dataframe(df_results)
+
 
 
