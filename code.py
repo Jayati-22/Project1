@@ -1423,7 +1423,7 @@ except Exception as e:
 
 
 
-st.title("WhatsApp → Stranger Things Character Mapper")
+st.title("Hawkins Lab WhatsApp Character Test 🧪")
 
 st.markdown("""
 Upload a WhatsApp exported chat text file. 
@@ -1450,6 +1450,7 @@ if uploaded_file is not None:
 
     st.subheader("Mapped Characters")
     st.dataframe(df_results)
+
 
 
 
