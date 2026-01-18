@@ -251,6 +251,10 @@
 # WhatsApp → Stranger Things Character Mapper (Prototype)
 # ============================================================
 
+# ============================================================
+# WhatsApp → Stranger Things Character Mapper (Prototype)
+# ============================================================
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -392,18 +396,24 @@ def process_whatsapp_file(file_path):
 # -------------------------------
 # 2. Streamlit app
 # -------------------------------
-# -------------------------------
-# 2. Streamlit app
-# -------------------------------
 
-# Stranger Things Theme CSS
-st.markdown("""
+
+import base64
+
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def set_png_as_page_bg(png_file):
+    bin_str = get_base64_of_bin_file(png_file)
+    page_bg_img = '''
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
 
     /* Main background */
     .stApp {
-        background-image: url("background.jpg");
+        background-image: url("data:image/jpg;base64,%s");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -417,8 +427,8 @@ st.markdown("""
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100%%;
+        height: 100%%;
         background-color: rgba(0, 0, 0, 0.6); 
         z-index: -1;
     }
@@ -440,7 +450,7 @@ st.markdown("""
     }
 
     /* Text */
-    p, div, label, li {
+    p, div, label, li, span {
         color: #e0e0e0 !important;
         font-family: 'Courier New', monospace;
         font-weight: bold;
@@ -487,7 +497,15 @@ st.markdown("""
         border-radius: 5px;
     }
     </style>
-""", unsafe_allow_html=True)
+    ''' %% bin_str
+    
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+
+try:
+    set_png_as_page_bg('background.jpg')
+except Exception as e:
+    st.warning(f"Could not load background image: {e}")
+
 
 st.title("WhatsApp → Stranger Things Character Mapper")
 
@@ -516,4 +534,5 @@ if uploaded_file is not None:
 
     st.subheader("Mapped Characters")
     st.dataframe(df_results)
+
 
