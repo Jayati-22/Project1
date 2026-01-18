@@ -143,6 +143,82 @@ def process_whatsapp_file(file_path):
 # -------------------------------
 # 2. Streamlit app
 # -------------------------------
+# -------------------------------
+# 2. Streamlit app
+# -------------------------------
+
+# Stranger Things Theme CSS
+st.markdown("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
+
+    /* Main background */
+    .stApp {
+        background-color: #0e0e0e;
+        color: #dcdcdc;
+    }
+
+    /* Titles and Headers */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Libre Baskerville', serif;
+        color: #E71D36 !important;
+        text-shadow: 0 0 5px #E71D36, 0 0 10px #8B0000;
+        letter-spacing: 1px;
+    }
+    
+    /* Specific Title Styling */
+    h1 {
+        font-size: 3.5rem !important;
+        text-transform: uppercase;
+        border-bottom: 2px solid #E71D36;
+        padding-bottom: 10px;
+    }
+
+    /* Text */
+    p, div, label {
+        color: #dcdcdc !important;
+        font-family: 'Courier New', monospace;
+    }
+    
+    /* Buttons */
+    .stButton > button {
+        background-color: transparent !important;
+        color: #E71D36 !important;
+        border: 2px solid #E71D36 !important;
+        border-radius: 5px;
+        font-family: 'Libre Baskerville', serif;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+    }
+    .stButton > button:hover {
+        box-shadow: 0 0 10px #E71D36;
+        color: #fff !important;
+    }
+
+    /* File Uploader */
+    .stFileUploader {
+        border: 1px dashed #E71D36;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    /* DataFrame/Table */
+    [data-testid="stDataFrame"] {
+        border: 1px solid #444;
+    }
+    
+    /* Scrollbars */
+    ::-webkit-scrollbar {
+        width: 10px;
+        background: #0e0e0e;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #E71D36; 
+        border-radius: 5px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("WhatsApp → Stranger Things Character Mapper")
 
 st.markdown("""
@@ -170,6 +246,3 @@ if uploaded_file is not None:
 
     st.subheader("Mapped Characters")
     st.dataframe(df_results)
-
-
-
