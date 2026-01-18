@@ -6,7 +6,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import re
-from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
 from sklearn.metrics.pairwise import cosine_similarity
 
 # -------------------------------
@@ -93,10 +93,10 @@ def process_whatsapp_file(file_path):
     # -------------------------------
     # Sentence embeddings
     # -------------------------------
-    embedder = SentenceTransformer("all-mpnet-base-v2")
+    embedder = TextEmbedding()
 
-    train_embeddings = embedder.encode(df_train["Dialogue"].tolist())
-    test_embeddings  = embedder.encode(df_test["Dialogue"].tolist())
+    train_embeddings = np.array(list(embedder.encode(df_train["Dialogue"].tolist())))
+    test_embeddings  = np.array(list(embedder.encode(df_test["Dialogue"].tolist())))
 
     # -------------------------------
     # Average embedding per character
@@ -170,4 +170,5 @@ if uploaded_file is not None:
 
     st.subheader("Mapped Characters")
     st.dataframe(df_results)
+
 
