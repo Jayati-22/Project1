@@ -497,7 +497,7 @@ def set_png_as_page_bg(png_file):
         border-radius: 5px;
     }
     </style>
-    ''' %% bin_str
+    ''' % bin_str
     
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
@@ -534,5 +534,6 @@ if uploaded_file is not None:
 
     st.subheader("Mapped Characters")
     st.dataframe(df_results)
+
 
 
